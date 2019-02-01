@@ -1,0 +1,14 @@
+{:deps {org.clojure/clojure {:mvn/version "RELEASE"}
+        org.clojure/clojurescript {:mvn/version "RELEASE"}
+        reagent {:mvn/version "0.8.1"}
+        cljsjs/victory {:mvn/version "0.24.2-0"}
+        camel-snake-kebab {:mvn/version "0.4.0"}}
+ :paths ["src/main" "resources"]
+ :aliases {:fig {:extra-deps
+                  {com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}
+                   com.bhauman/figwheel-main {:mvn/version "0.1.9"}}
+                 :extra-paths ["target" "src/test" "src/demo"]}
+           :build {:main-opts ["-m" "figwheel.main" "-b" "dev" "-r"]}
+           :min   {:main-opts ["-m" "figwheel.main" "-O" "advanced" "-bo" "dev"]}
+           :test  {:main-opts ["-m" "figwheel.main" "-co" "test.cljs.edn" "-m"
+                               com.yetanalytics.test-runner]}}}

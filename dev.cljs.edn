@@ -1,0 +1,4 @@
+^{:watch-dirs ["src/test" "src/main" "src/demo"]
+  :css-dirs ["resources/public/css"]
+  :auto-testing true}
+{:main com.yetanalytics.victorious.demo}
