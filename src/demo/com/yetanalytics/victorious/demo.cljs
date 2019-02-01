@@ -9,21 +9,29 @@
 (defn get-app-element []
   (gdom/getElement "app"))
 
-(def data (atom {:color-scale ["tomato", "orange", "gold", "cyan", "navy" ]
-                 :data [{:x "Cats" :y 20} {:x "Dogs" :y 70}]}))
+(def data (atom {:pie
+                 {:color-scale ["tomato", "orange", "gold", "cyan", "navy" ]
+                  :data [{:x "Cats" :y 20} {:x "Dogs" :y 70}]}}))
+
+(defn rand-pie! [_]
+  (let [cats (rand-int 101)
+        dogs (- 100 cats)]
+    (swap! data assoc-in [:pie :data]
+           [{:x "Cats" :y cats} {:x "Dogs" :y dogs}])))
+
+(defn pie []
+  [:section.pie
+   [:h1 "Pie"]
+   [v/pie (merge {:animate {:duration 2000
+                            :easing "bounce"}}
+                 (:pie @data))]
+   [:button {:on-click
+             rand-pie!}
+    "CHANGE PIE"]])
 
 (defn hello-world []
   [:div
-   [v/chart
-    {:animate {:duration 2000
-               :easing "bounce"}}
-    [v/pie @data]]
-   [:button {:on-click (fn [_]
-                         (let [cats (rand-int 101)
-                               dogs (- 100 cats)]
-                           (swap! data assoc :data
-                                  [{:x "Cats" :y cats} {:x "Dogs" :y dogs}])))}
-    "CHANGE"]])
+   [pie]])
 
 (defn mount [el]
   (reagent/render-component [hello-world] el))
