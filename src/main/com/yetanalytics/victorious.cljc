@@ -36,9 +36,13 @@
                                 "Voronoi"
                                 "Label"
                                 "Stack"]
-                           :let [name-sym (csk/->kebab-case-symbol nm)]]
-                       `(def ~name-sym
-                          (reagent.core/adapt-react-class
-                           ~(symbol "js" (str "Victory.Victory" nm)))))]
+                           :let [name-sym (csk/->kebab-case-symbol nm)
+                                 js-sym (symbol "js" (str "Victory.Victory" nm))]]
+                       `(do
+                          (assert (some? ~js-sym)
+                                  "Victory object not found. Check your externs.")
+                          (def ~name-sym
+                            (reagent.core/adapt-react-class
+                             ~js-sym))))]
             `(do ~@defs)))
    :cljs (defonce defall (defall-victory!)))
