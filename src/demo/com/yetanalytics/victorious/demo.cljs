@@ -20,7 +20,7 @@
 
 (defn pie []
   [:section.pie
-   [:h1 "Pie"]
+   [:p.title "Pie"]
    [v/pie {:color-scale ["tomato", "orange", "gold", "cyan", "navy" ]
            :animate {:duration 2000
                      :easing "bounce"}

@@ -1,2 +1,8 @@
 /* some style */
 
+.title{
+  color: black;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Ser­avek, "Trebuchet MS", sans-serif;
+  font-size: 36px;
+}
