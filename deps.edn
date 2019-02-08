@@ -6,7 +6,7 @@
  :paths ["src/main" "resources"]
  :aliases {:fig {:extra-deps
                   {com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}
-                   com.bhauman/figwheel-main {:mvn/version "0.1.9"}}
+                   com.bhauman/figwheel-main {:mvn/version "0.2.0"}}
                  :extra-paths ["target" "src/test" "src/demo"]}
            :build {:main-opts ["-m" "figwheel.main" "-b" "dev" "-r"]}
            :min   {:main-opts ["-m" "figwheel.main" "-O" "advanced" "-bo" "dev"]}
