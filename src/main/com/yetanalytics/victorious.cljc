@@ -1,5 +1,6 @@
 (ns com.yetanalytics.victorious
-  #?(:cljs (:require [reagent.core :as r]
+  #?(:cljs (:require [cljs.loader :as loader]
+                     [reagent.core :as r]
                      [cljsjs.victory])
      :clj (:require [camel-snake-kebab.core :as csk]))
   #?(:cljs (:require-macros
@@ -46,3 +47,5 @@
                              ~js-sym))))]
             `(do ~@defs)))
    :cljs (defonce defall (defall-victory!)))
+
+#?(:cljs (loader/set-loaded! :com.yetanalytics.victorious))
